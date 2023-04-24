@@ -1,0 +1,157 @@
+$lora: 'Lora', serif;
+$mont: 'Montserrat', sans-serif;
+$eerie-black: rgb(50, 50, 50);
+$ghost-white: hsla(240, 100%, 98%, 1);
+$yello: rgb(214,211,77);
+$mengo: rgb(215, 47, 49);
+
+$big : 1.25em;
+$bigFont : 300%;
+$small : 1em;
+$smallFont : 150%;
+$extraSmall : 0.5em;
+$extraSmallFont : 100%;
+
+$bigFontInput : 80%;
+$smallFontInput : 80%;
+$extraSmallFontInput : 80%;
+
+body {
+    display: flex;
+    flex-direction: row;
+    font-family: $mont;
+    background-color: black;
+    color: $ghost-white;
+}
+
+#menu {
+    background-color: $eerie-black;
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 9.5%;
+    left: 2%;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 100px;
+}
+
+#body {
+    background-color: $eerie-black;
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 75%;
+    left: 12.5%;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 100px;
+    border-top-left-radius: 20px;
+}
+
+#button {
+    height: 10%;
+}
+
+#container {
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    vertical-align: middle;
+    flex-wrap: wrap;
+}
+
+#info_box {
+    display: none;
+}
+
+.title {
+    font-family: $mont;
+}
+
+.country {
+    height: 100%;
+    width: 100%;
+}
+
+table, tr, td {
+    border-collapse: collapse;
+    border: 1px black solid;
+}
+
+td {
+    text-align: center;
+}
+
+.m td {
+    width: $big;
+    height: $big;
+    font-size: $bigFont;
+}
+
+.l td {
+    width: $small;
+    height: $small;
+    font-size: $smallFont;
+}
+
+.xl td {
+    width: $extraSmall;
+    height: $extraSmall;
+    font-size: $extraSmallFont;
+}
+
+.m input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: $bigFontInput;
+    color: $ghost-white;
+}
+
+.l input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: none;
+    background: none;
+    outline: none;
+    width: $small;
+    height: $small;
+    font-size: $smallFontInput;
+    color: $ghost-white;
+}
+
+.xl input {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border: none;
+    background: none;
+    outline: none;
+    width: $extraSmall;
+    height: $extraSmall;
+    font-size: $extraSmallFontInput;
+    color: $ghost-white;
+}
+
+.left_border {
+    border-left: 3px black solid;
+}
+
+.right_border {
+    border-right: 3px black solid;
+}
+
+.top_border {
+    border-top: 3px black solid;
+}
+
+.bottom_border {
+    border-bottom: 3px $eerie-black solid;
+}

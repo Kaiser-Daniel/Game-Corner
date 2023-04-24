@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sudoku</title>
+        <script src="javascript/script.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lora&family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body onload="generate(3,9)">
+        <div id="menu">
+            <form name="sudoku">
+                <label for="difficulty">Difficulty (1 to 7)</label><br>
+                <input type="number" min="1" max="7" value="2" id="difficulty" name="difficulty"><br>
+                <input type="radio" value="9" checked="true" id="m" name="size">
+                <label for="m">Normal sudoku</label><br>
+                <input type="radio" value="16" id="l" name="size">
+                <label for="l">Large sudoku</label><br>
+                <input type="radio" value="25" id="xl" name="size">
+                <label for="xl">Extra-Large sudoku</label><br>
+            </form>
+            <button id="button" onclick="send()">Sudoku</button>
+        </div>
+        <div id="body">
+            <div id="sudoku_container">
+
+            </div>
+        </div>
+    </body>
+</html>
