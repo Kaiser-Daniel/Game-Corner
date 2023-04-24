@@ -163,6 +163,11 @@ function generate(diff, size) {
                         var valid = check(row, col, value);
                         if(valid) {
                             fill(cell, value);
+                            if(checkFilled(incomplete)) {
+                                clearInterval(timeHandler);
+                                timeDisplay(timer);
+                            };
+
                         } else {
                             cell.removeChild(input);
                         }
@@ -521,22 +526,46 @@ function checkBox(x, y, num, solution) {
     return true;
 }
 
+function checkFilled(incomplete) {
+    for(i = 0; i<incomplete.length; i++) {
+        if(incomplete[i].includes(0)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 function time() {
     timer+=0.01;
     timeDisplay(timer);
 }
 
 function timeDisplay(timer) {
-    var hours, minutes, seconds, mili;
+    var hours, minutes, seconds, mili = 0;
     mili = Math.floor((timer-Math.floor(timer))*100)*10;
     minutes = Math.floor(timer/60);
     hours = Math.floor(minutes/60);
     minutes -= hours*60;
     seconds = Math.floor(timer%60);
     
-    document.getElementById("hours").innerHTML = hours;
-    document.getElementById("minutes").innerHTML = minutes;
-    document.getElementById("seconds").innerHTML = seconds;
-    document.getElementById("miliseconds").innerHTML = mili;
-
+    if(hours<10) {
+        document.getElementById("hours").innerHTML = "0"+hours;
+    } else {
+        document.getElementById("hours").innerHTML = hours;
+    }
+    if(minutes<10) {
+        document.getElementById("minutes").innerHTML = "0"+minutes;
+    } else {
+        document.getElementById("minutes").innerHTML = minutes;
+    }
+    if(seconds<10) {
+        document.getElementById("seconds").innerHTML = "0"+seconds;
+    } else {
+        document.getElementById("seconds").innerHTML = seconds;
+    }
+    if(mili<100){
+        document.getElementById("miliseconds").innerHTML = "0"+mili;
+    } else {
+        document.getElementById("miliseconds").innerHTML = mili;
+    }
 }

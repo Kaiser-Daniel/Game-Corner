@@ -6,6 +6,8 @@ var boxes;
 var sudokuSize;
 var moves = 7777;
 var digits = [];
+var timeHandler;
+var timer = 0;
 
 function send() {
   var diff = document.forms.sudoku.difficulty.value;
@@ -35,6 +37,9 @@ function generate(diff, size) {
   });
   boxes = Math.sqrt(size);
   sudokuSize = size;
+  timer = 0;
+  clearInterval(timeHandler);
+  timeHandler = setInterval(time, 10);
   var shuffle = [];
 
   if (size == 25) {
@@ -66,7 +71,6 @@ function generate(diff, size) {
 
     shuffle.push(rand);
     digits.push(_char(i + 1));
-    console.log(digits);
   }
 
   var num = 0;
@@ -184,6 +188,13 @@ function generate(diff, size) {
 
             if (valid) {
               fill(cell, value);
+
+              if (checkFilled(incomplete)) {
+                clearInterval(timeHandler);
+                timeDisplay(timer);
+              }
+
+              ;
             } else {
               cell.removeChild(input);
             }
@@ -623,4 +634,55 @@ function checkBox(x, y, num, solution) {
   }
 
   return true;
+}
+
+function checkFilled(incomplete) {
+  for (i = 0; i < incomplete.length; i++) {
+    if (incomplete[i].includes(0)) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function time() {
+  timer += 0.01;
+  timeDisplay(timer);
+}
+
+function timeDisplay(timer) {
+  var hours,
+      minutes,
+      seconds,
+      mili = 0;
+  mili = Math.floor((timer - Math.floor(timer)) * 100) * 10;
+  minutes = Math.floor(timer / 60);
+  hours = Math.floor(minutes / 60);
+  minutes -= hours * 60;
+  seconds = Math.floor(timer % 60);
+
+  if (hours < 10) {
+    document.getElementById("hours").innerHTML = "0" + hours;
+  } else {
+    document.getElementById("hours").innerHTML = hours;
+  }
+
+  if (minutes < 10) {
+    document.getElementById("minutes").innerHTML = "0" + minutes;
+  } else {
+    document.getElementById("minutes").innerHTML = minutes;
+  }
+
+  if (seconds < 10) {
+    document.getElementById("seconds").innerHTML = "0" + seconds;
+  } else {
+    document.getElementById("seconds").innerHTML = seconds;
+  }
+
+  if (mili < 100) {
+    document.getElementById("miliseconds").innerHTML = "0" + mili;
+  } else {
+    document.getElementById("miliseconds").innerHTML = mili;
+  }
 }

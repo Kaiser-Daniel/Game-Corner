@@ -10,8 +10,9 @@ body {
   background-color: #323232;
   position: absolute;
   display: flex;
+  flex-direction: column;
   height: 100%;
-  width: 9.5%;
+  width: 15%;
   left: 2%;
   align-items: center;
   justify-content: center;
@@ -23,9 +24,10 @@ body {
   background-color: #323232;
   position: absolute;
   display: flex;
+  flex-direction: column;
   height: 100%;
-  width: 75%;
-  left: 12.5%;
+  width: 80%;
+  left: 17.5%;
   align-items: center;
   justify-content: center;
   border-top-right-radius: 100px;
@@ -47,6 +49,25 @@ body {
 
 #info_box {
   display: none;
+}
+
+#timeContainer {
+  z-index: 1;
+  display: flex;
+  width: 8em;
+  font-family: "Courier Prime", monospace;
+  background-color: #d72f31;
+  padding: 2.5%;
+  justify-content: space-around;
+  flex-direction: row;
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  font-size: 0.8em;
+}
+
+.timeDisplay {
+  flex-direction: column;
 }
 
 .title {
