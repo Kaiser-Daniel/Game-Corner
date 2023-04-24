@@ -6,6 +6,9 @@ var sudokuSize;
 var moves = 7777;
 var digits = [];
 
+var timeHandler;
+var timer = 0;
+
 function send() {
     var diff = document.forms.sudoku.difficulty.value;
     sudokuSize = document.forms.sudoku.size.value;
@@ -18,6 +21,10 @@ function generate(diff, size) {
     incomplete = Array.from({length: size}, () => Array.from({length: size}, () => 0));
     boxes = Math.sqrt(size);
     sudokuSize = size;
+
+    timer = 0;
+    clearInterval(timeHandler);
+    timeHandler = setInterval(time, 10);
     
 
     var shuffle = [];
@@ -45,7 +52,6 @@ function generate(diff, size) {
         }
         shuffle.push(rand);
         digits.push(char(i+1));
-        console.log(digits);
     }
     
     var num = 0;
@@ -513,4 +519,24 @@ function checkBox(x, y, num, solution) {
         }
     }
     return true;
+}
+
+function time() {
+    timer+=0.01;
+    timeDisplay(timer);
+}
+
+function timeDisplay(timer) {
+    var hours, minutes, seconds, mili;
+    mili = Math.floor((timer-Math.floor(timer))*100)*10;
+    minutes = Math.floor(timer/60);
+    hours = Math.floor(minutes/60);
+    minutes -= hours*60;
+    seconds = Math.floor(timer%60);
+    
+    document.getElementById("hours").innerHTML = hours;
+    document.getElementById("minutes").innerHTML = minutes;
+    document.getElementById("seconds").innerHTML = seconds;
+    document.getElementById("miliseconds").innerHTML = mili;
+
 }

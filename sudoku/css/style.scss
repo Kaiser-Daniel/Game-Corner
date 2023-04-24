@@ -41,6 +41,7 @@ body {
     background-color: $eerie-black;
     position: absolute;
     display: flex;
+    flex-direction: column;
     height: 100%;
     width: 75%;
     left: 12.5%;
@@ -65,6 +66,19 @@ body {
 
 #info_box {
     display: none;
+}
+
+#timeContainer {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 5%;
+    left: 95%;
+    font-size: 5em;
+}
+
+.timeDisplay {
+    flex-direction: column;
 }
 
 .title {
