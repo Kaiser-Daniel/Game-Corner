@@ -6,13 +6,16 @@ var boxes;
 var sudokuSize;
 var moves = 7777;
 var digits = [];
+var mode = 0;
+var difficulty;
 var timeHandler;
 var timer = 0;
 
 function send() {
-  var diff = document.forms.sudoku.difficulty.value;
+  difficulty = document.forms.sudoku.difficulty.value;
   sudokuSize = document.forms.sudoku.size.value;
-  generate(diff, sudokuSize);
+  mode = document.forms.sudoku.mode.value;
+  generate(difficulty, sudokuSize);
 }
 
 function generate(diff, size) {
@@ -37,6 +40,8 @@ function generate(diff, size) {
   });
   boxes = Math.sqrt(size);
   sudokuSize = size;
+  mode = 0;
+  difficulty = diff;
   timer = 0;
   clearInterval(timeHandler);
   timeHandler = setInterval(time, 10);
@@ -192,6 +197,7 @@ function generate(diff, size) {
               if (checkFilled(incomplete)) {
                 clearInterval(timeHandler);
                 timeDisplay(timer);
+                victory();
               }
 
               ;
@@ -685,4 +691,56 @@ function timeDisplay(timer) {
   } else {
     document.getElementById("miliseconds").innerHTML = mili;
   }
+}
+
+function victory() {
+  document.getElementById("victory").style.display = "flex";
+  var score = points(mode);
+  document.getElementById("points").innerHTML = score;
+}
+
+function points(mode) {
+  switch (mode) {
+    case 2:
+      break;
+
+    case 1:
+      break;
+
+    case 0:
+      return timePoints(timer, difficulty, sudokuSize);
+      break;
+
+    default:
+      break;
+  }
+}
+
+function timePoints(timeTaken, difficulty, puzzleSize) {
+  var points = 100000;
+  var decay = 125;
+  var decrease = 2.5;
+  var diffModifier = 1 - (difficulty - 3) * 0.2;
+  var sizeModifier = [1.25, 0.75, 0.33];
+  var size = 0;
+
+  if (puzzleSize == 25) {
+    size = 2;
+  }
+
+  if (puzzleSize == 16) {
+    size = 1;
+  }
+
+  var gracePeriods = [60, 240, 540];
+
+  for (i = gracePeriods[puzzleSize / 8 - 1] || 0; i < timeTaken; i++) {
+    points -= decay * diffModifier * sizeModifier[size];
+
+    if (i % 60 == 0) {
+      decay -= decrease;
+    }
+  }
+
+  return Math.floor(points);
 }

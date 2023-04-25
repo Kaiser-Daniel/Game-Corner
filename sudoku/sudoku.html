@@ -24,9 +24,11 @@
                 <input type="radio" value="25" id="xl" name="size">
                 <label for="xl">Extra-Large sudoku</label><br>
                 Mode<br>
-                <input type="radio" value="pressure" id="pressure" name="mode">
+                <input type="radio" value="0" checked="true" id="normal" name="mode">
+                <label for="xl">Normal</label><br>
+                <input type="radio" value="1" id="pressure" name="mode">
                 <label for="xl">Time pressure</label><br>
-                <input type="radio" value="combo" id="combo" name="mode">
+                <input type="radio" value="2" id="combo" name="mode">
                 <label for="xl">Combo mode</label><br>
             </form>
             <button id="button" onclick="send()">Sudoku</button>
@@ -69,6 +71,12 @@
             <div id="sudoku_container">
 
             </div>
+        </div>
+
+        <div id="victory">
+            <div>You are Winner !</div>
+            <div id="time"></div>
+            <div id="points"></div>
         </div>
     </body>
 </html>

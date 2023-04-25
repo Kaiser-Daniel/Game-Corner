@@ -6,6 +6,20 @@ body {
   color: #f5f5ff;
 }
 
+#victory {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  font-size: 500%;
+}
+
 #menu {
   background-color: #323232;
   position: absolute;
